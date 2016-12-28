@@ -10,7 +10,7 @@ Get the project from here: https://spbulkdocumentimport.codeplex.com/
 
 You will need this downloaded and extracted to use this: https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
 
-How to build the Bulk Loader visual studio project:
+### How to build the Bulk Loader visual studio project:
 
 Download this Visual Studio Project:
 https://code.msdn.microsoft.com/Bulk-Loader-Create-Unique-eeb2d084
@@ -44,7 +44,7 @@ Build the project, which will generate 4 project’s executables:
  * BulkLoader.Controller.Console
  * BulkLoader.Monitor.Console
 
-How to run it: 
+### How to run it: 
 
 See video demo: https://www.youtube.com/watch?v=O2vX2kfK0mQ
 
