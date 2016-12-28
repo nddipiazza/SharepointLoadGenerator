@@ -58,6 +58,7 @@ Note the docLibFileDumpFolder is the result of Step 1 and it must have at least 
 
 Save the powershell script from this git repository `sharepoint-load-test-data-generator.ps1` and save it to the Sharepoint server. Edit the file and change the properties at the top to match your preferences. 
 
+```
 $sharepointHost = Your sharepoint hostname
 $siteNamePrefix = The prefix it should give all of your sites. They will be testsiteprefix1, testsiteprefix2, etc.
 $subsiteNamePrefix = The prefix it should give all of your sub-sites. They will be testsubsiteprefix1, testsubsiteprefix2, etc.
@@ -68,3 +69,4 @@ $numSites = The number of sites to create.
 $numSubSites = The number of sub-sites to create in each site.
 $numDocumentLibraies = The number of document libraries to create in each site and sub-site.
 $numSharepointSiteGroupsToCreate = The number of sharepoint site groups to create in each site. 
+```
