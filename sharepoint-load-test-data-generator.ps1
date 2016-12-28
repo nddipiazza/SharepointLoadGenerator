@@ -9,6 +9,7 @@ $numSites = 2
 $numSubSites = 2
 $numDocumentLibraies = 2
 $numSharepointSiteGroupsToCreate = 5
+$siteOwner = "win-od8k4mkm92n\administrator"
 function New-SPList {
     <#
     .Synopsis
@@ -181,7 +182,7 @@ $docLibFolders = ([System.IO.DirectoryInfo] (Get-Item $docLibFileDumpFolder)).Ge
 for ($i=1; $i -le $numSites; $i++)
 {
   write-host "Creating site $sharepointHost/sites/$siteNamePrefix$i which is $i out of $numSites to create" -foregroundcolor Green
-  New-SPSite $sharepointHost/sites/$siteNamePrefix$i -OwnerAlias "lucidworks\administrator" -Name "$siteNamePrefix-$i" -Template "STS#2"
+  New-SPSite $sharepointHost/sites/$siteNamePrefix$i -OwnerAlias "$siteOwner" -Name "$siteNamePrefix-$i" -Template "STS#2"
   ProcessSite $sharepointHost/sites/$siteNamePrefix$i
   for ($j=1; $j -le $numSubSites; $j++)
   {
