@@ -1,6 +1,6 @@
-# Create test sites, subsites, sharepoint site groups, document libraries and upload file structure
+I needed a way to take a blank sharepoint and populate it full of useful data. This is useful for people who are integrating with sharepoint and want to develop some sort of connector but want to have something that is less happy-path than a blank sharepoint. 
 
-I needed a way to take a blank sharepoint and populate it full of useful data.
+# Automate the creation of test sites, subsites, sharepoint site groups, document libraries with uploaded files
 
 The powershell script https://github.com/nddipiazza/SharepointLoadGenerator/blob/master/sharepoint-load-test-data-generator.ps1 creates sites, sub-sites and document libraries, and then is capable of uploading folders from your file system into document libraries.
 
