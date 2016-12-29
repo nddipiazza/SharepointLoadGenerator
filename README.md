@@ -13,7 +13,7 @@ Document Library Root (example: C:\testfiles)
   - DocFolder3
 ```
 
-It will also create some sharepoint groups.
+The script will also create some sharepoint groups in each site.
 
 So to use this, you save this ps1 script to your sharepoint box, edit the number of host, name prefixes, number of sites you want to create, number of sub-sites you want to create, and number of document libraries and the location of Document Library Root on your local file system. Then you run the script and it will slowly create a very rich set of useful test data in sharepoint.
 
