@@ -2,7 +2,7 @@
 
 I needed a way to take a blank sharepoint and populate it full of useful data.
 
-The powershell script https://github.com/nddipiazza/SharepointLoadGenerator/blob/master/sharepoint-load-test-data-generator.ps1 creates sites, sub-sites and document libraries, and then is capable of folders from your file system into document libraries.
+The powershell script https://github.com/nddipiazza/SharepointLoadGenerator/blob/master/sharepoint-load-test-data-generator.ps1 creates sites, sub-sites and document libraries, and then is capable of uploading folders from your file system into document libraries.
 
 You supply a Document Library Root which is a directory with folders for each Document library. For example, if you supply:
 
