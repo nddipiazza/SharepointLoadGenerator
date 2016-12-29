@@ -1,16 +1,47 @@
 # Create test sites, subsites, sharepoint site groups, document libraries and upload file structure
 
-Here we will create a bunch of test data files using a generator tool. Then we will use a powershell script to create Sites, Sub-Sites and Document libraries and it upload the generated test folders into these new document libraries. 
+I needed a way to take a blank sharepoint and populate it full of useful data.
 
-## Step 1: Generate the test files
+The powershell script https://github.com/nddipiazza/SharepointLoadGenerator/blob/master/sharepoint-load-test-data-generator.ps1 creates sites, sub-sites and document libraries, and then is capable of folders from your file system into document libraries.
 
-There is a Visual Studio project created by Microsoft that can load a Wikipedia backup and can create PPT, DOC, HTML, Excel files from wikipedia content so that they have real content and images too.
+You supply a Document Library Root which is a directory with folders for each Document library. For example, if you supply:
+
+```
+Document Library Root (example: C:\testfiles)
+  - DocFolder1 (example: C:\testfiles\DocFolder1)
+  - DocFolder2
+  - DocFolder3
+```
+
+It will also create some sharepoint groups.
+
+So to use this, you save this ps1 script to your sharepoint box, edit the number of host, name prefixes, number of sites you want to create, number of sub-sites you want to create, and number of document libraries and the location of Document Library Root on your local file system. Then you run the script and it will slowly create a very rich set of useful test data in sharepoint.
+
+Note the docLibFileDumpFolder is the result of Step 1 and it must have at least (numSites * numSubSites * numDocumentLIbraries) folders in it. The tool will add each document library one folder at a time in that directory. 
+
+Save the powershell script from this git repository `sharepoint-load-test-data-generator.ps1` and save it to the Sharepoint server. Edit the file and change the properties at the top to match your preferences. 
+
+```
+$sharepointHost = Your sharepoint hostname
+$siteNamePrefix = The prefix it should give all of your sites. They will be testsiteprefix1, testsiteprefix2, etc.
+$subsiteNamePrefix = The prefix it should give all of your sub-sites. They will be testsubsiteprefix1, testsubsiteprefix2, etc.
+$siteGroupNamePrefix = The site group name prefix to give all sharepoint site groups created.
+$documentLibraryNamePrefix = The document library prefix given to all sharepoint document libraries creatd.
+$docLibFileDumpFolder = The folder containing the output of step 1 above.
+$numSites = The number of sites to create.
+$numSubSites = The number of sub-sites to create in each site.
+$numDocumentLibraies = The number of document libraries to create in each site and sub-site.
+$numSharepointSiteGroupsToCreate = The number of sharepoint site groups to create in each site. 
+```
+# Optional step: Generate useful test data
+
+If you don't have a bunch of test files already, there is a Visual Studio project created by Microsoft that can load a Wikipedia backup and can create PPT, DOC, HTML, Excel files from wikipedia content so that they have real content and images too.
 
 Get the project from here: https://spbulkdocumentimport.codeplex.com/
 
 You will need this downloaded and extracted to use this: https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
 
-### How to build the Bulk Loader visual studio project:
+## How to build the Bulk Loader visual studio project:
 
 Download this Visual Studio Project:
 https://code.msdn.microsoft.com/Bulk-Loader-Create-Unique-eeb2d084
@@ -44,29 +75,6 @@ Build the project, which will generate 4 project’s executables:
  * BulkLoader.Controller.Console
  * BulkLoader.Monitor.Console
 
-### How to run it: 
+## How to run it: 
 
 See video demo: https://www.youtube.com/watch?v=O2vX2kfK0mQ
-
-## Step 2: Create Sites, Sub-Sites, Sharepoint site groups, Document Libraries and upload the generated test files using the powershell script
-
-In step 1, we created a big bundle of test documents and subfolders. 
-
-In this step we save the following script and edit the number of host, name prefixes, number of sites you want to create, number of sub-sites you want to create, and number of document libraries and the location of the generated test files from Step 1.
-
-Note the docLibFileDumpFolder is the result of Step 1 and it must have at least (numSites * numSubSites * numDocumentLIbraries) folders in it. The tool will add each document library one folder at a time in that directory. 
-
-Save the powershell script from this git repository `sharepoint-load-test-data-generator.ps1` and save it to the Sharepoint server. Edit the file and change the properties at the top to match your preferences. 
-
-```
-$sharepointHost = Your sharepoint hostname
-$siteNamePrefix = The prefix it should give all of your sites. They will be testsiteprefix1, testsiteprefix2, etc.
-$subsiteNamePrefix = The prefix it should give all of your sub-sites. They will be testsubsiteprefix1, testsubsiteprefix2, etc.
-$siteGroupNamePrefix = The site group name prefix to give all sharepoint site groups created.
-$documentLibraryNamePrefix = The document library prefix given to all sharepoint document libraries creatd.
-$docLibFileDumpFolder = The folder containing the output of step 1 above.
-$numSites = The number of sites to create.
-$numSubSites = The number of sub-sites to create in each site.
-$numDocumentLibraies = The number of document libraries to create in each site and sub-site.
-$numSharepointSiteGroupsToCreate = The number of sharepoint site groups to create in each site. 
-```
