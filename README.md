@@ -59,12 +59,11 @@ In Visual Studio, open the .sln file for BulkLoader
 
 Go to Properties → Signing → Uncheck the clickonce signing.
 
-Make sure Open XML SDK and log4net DLL references are added.
+Make sure Open XML SDK and log4net DLL references are added:
 
-Install Open XML SDK 2.0 for Microsoft Office
-http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=5124
+ - Install Open XML SDK 2.0 for Microsoft Office http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=5124
 
-Download Apache log4net-1.2.15
+ - Download Apache log4net-1.2.15 http://archive.apache.org/dist/logging/log4net/binaries/log4net-1.2.15-bin-newkey.zip
 
 On each project, add references to log4net and openxml DLLs.
 
